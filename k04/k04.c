@@ -115,7 +115,7 @@ void QuickSort(City arrayCity[], int left, int right)
     int j = right;
     int pivot = left;
 
-    while(left <= right)
+    while(left < right)
     {
         for(pos = left; pos <= right; pos++)
         {
@@ -134,7 +134,7 @@ void QuickSort(City arrayCity[], int left, int right)
             }
         }
 
-        if(i >= j || i == pivot)
+        if(i >= j)
         {
             tempCity = arrayCity[pivot];
             arrayCity[pivot] = arrayCity[j];
