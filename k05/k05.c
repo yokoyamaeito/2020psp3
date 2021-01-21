@@ -105,8 +105,37 @@ int StackIsEmpty(void)
 
 void DepthFirstSearch(int size, int matrix[size][size], int start)
 {
-    //  ここを実装する
+    int hold;
+    int* visited;
+    visited = malloc(sizeof(int)*size);
 
+    for (int i = 0; i < size; i++)
+    {
+        visited[i] = 0;
+    }
+    
+    StackInit();
+    StackPush(start);
+
+    while (!StackIsEmpty())
+    {
+        hold = StackPop();
+
+        if (visited[hold] == 1)
+        {
+            continue;
+        }
+
+        visited[hold] = 1;
+        printf("visit:%d-%s\n", hold, ArrayStation[hold].name);
+        for (int i = 0; i < size; i++)
+        {
+            if (matrix[hold][i] != 0)
+            {
+                StackPush(i);
+            }
+        }
+    }
 }
 
 
@@ -171,8 +200,37 @@ int QueueIsEmpty()
 
 void BreadthFirstSearch(int size, int matrix[size][size], int start)
 {
-    //  ここを実装する
+    int hold;
+    int* visited;
+    visited = malloc(sizeof(int)*size);
 
+    for (int i = 0; i < size; i++)
+    {
+        visited[i] = 0;
+    }
+
+    InitQueue();
+    EnQueue(start);
+
+    while (!QueueIsEmpty())
+    {
+        hold = DeQueue();
+
+        if (visited[hold] == 1)
+        {
+            continue;
+        }
+
+        visited[hold] = 1;
+        printf("visit:%d-%s\n", hold, ArrayStation[hold].name);
+        for (int i = 0; i < size; i++)
+        {
+            if (matrix[hold][i] != 0)
+            {
+                EnQueue(i);
+            }
+        }
+    }
 }
 
 
@@ -190,7 +248,9 @@ int main(void)
 {
     int cost;
 
+    printf("-----DepthFirstSearch-----\n");
     DepthFirstSearch(MAX_STATIONS, AdjacencyMatrix, 0);
+    printf("-----BreadthFirstSearch-----\n");
     BreadthFirstSearch(MAX_STATIONS, AdjacencyMatrix, 0);
 
     cost = SearchGraphByDijkstra(0, 7, MAX_STATIONS, AdjacencyMatrix);
