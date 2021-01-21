@@ -101,11 +101,54 @@ int AdjacencyMatrix[MAX_STATIONS][MAX_STATIONS] = {
 ## ソースコードの説明
 
 
+必須問題（１）
+l.108 popした駅の引数を保持するint型の変数holdを宣言する.
+l.109 その場所に訪れたかどうかを判断するためのint型の配列visitedを宣言する.
+l.110 visitedの領域sizeを確保する.
+l.112 ~ l.115 visitedを初期化する.
+l.117 スタックの初期化を行う.
+l.118 startの引数をスタックにプッシュする.
+l.120 ~ l.130 スタックが空になるまでwhile文を繰り返す.
+    l.122 取り出した値をholdに保持させる.
+    l.124 ~ l.127 スタックから値を取り出す. 訪れた場所であれば処理を続行する.
+    l.129 ~ l.130 訪れていない場合は隣接するノードをスタックにプッシュする.
+
+
+必須問題（２）
+l.203 popした駅の引数を保持するint型の変数holdを宣言する.
+l.204 その場所に訪れたかどうかを判断するためのint型の配列visitedを宣言する.
+l.205 visitedの領域sizeを確保する.
+l.207 ~ l.210 visitedを初期化する.
+l.212 キューの初期化を行う.
+l.213 startの引数をキューに入れる.
+l.215 ~ l.233 キューが空になるまでwhile文を繰り返す.
+    l.217 取り出した値をholdに保持させる.
+    l.219 ~ l.222 キューから値を取り出す.　訪れた場所であれば処理を繰り返す.
+    l.224 ~ l.232 訪れていない場合は隣接するノードをスタックに入れる.
+
 
 ## 出力結果
 
 ```
-
+-----DepthFirstSearch-----
+visit:0-akasako
+visit:1-nagasakidaigakumae
+visit:2-nagasakiekimae
+visit:6-shiminkaikan
+visit:7-hotarujaya
+visit:5-sofukuji
+visit:3-shinchichukagai
+visit:4-ishibashi
+-----BreadthFirstSearch-----
+visit:0-akasako
+visit:1-nagasakidaigakumae
+visit:2-nagasakiekimae
+visit:3-shinchichukagai
+visit:6-shiminkaikan
+visit:4-ishibashi
+visit:5-sofukuji
+visit:7-hotarujaya
+Time Required: 8
 ```
 
 ## 修正履歴
