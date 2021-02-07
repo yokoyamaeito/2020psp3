@@ -19,8 +19,8 @@ typedef struct node_data {
 } Node;
 
 #define DEBUG
-//#define CHALLENGE1
-//#define CHALLENGE2
+#define CHALLENGE1
+#define CHALLENGE2
 
 #define SUCCESS 1
 #define ERROR   0
@@ -86,18 +86,62 @@ Node* InsertNewNode(City newCity, Node* pNext)
 #ifdef CHALLENGE1
 int DeleteNodeAt(Node** ppNode, int cn)
 {
-    //  チャレンジ問題1
-    //  ここを実装する
+    int pos = 0;
+    Node *pNode = *ppNode;
+    Node *pPrev;
 
+    if (cn == 0)
+    {
+        *ppNode = pNode->pNext;
+        free(pNode);
+
+        return SUCCESS;
+    }
+    else
+    {
+        pos = 0;
+        while (pNode->pNext != NULL)
+        {
+            if (pos == cn)
+            {
+                break;
+            }
+
+            pPrev = pNode;
+            pNode = pNode->pNext;
+
+            pos++;
+        }
+
+        pPrev->pNext = pNode->pNext;
+        free(pNode);
+
+        return SUCCESS;
+    }
+    
+    return ERROR;
 }
 #endif
 
 #ifdef CHALLENGE2
 int SearchCityByName(Node* pList, char* cityName, City* pCity)
 {
-    //  チャレンジ問題2
-    //  ここを実装する
+    int pos = 0;
+    Node *pNode = pList;
 
+    while (pNode != NULL)
+    {
+        if (!strcmp(pNode->city.name, cityName))
+        {
+            *pCity = pNode->city;
+            return pos;
+            break;
+        }
+
+        pNode = pNode->pNext;
+        pos++;
+    }
+    return -1;
 }
 #endif
 
