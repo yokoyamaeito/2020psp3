@@ -129,12 +129,13 @@ int SearchCityByName(Node* pList, char* cityName, City* pCity)
     int pos = 0;
     Node *pNode = pList;
 
-    while (pNode->pNext != NULL)
+    while (pNode != NULL)
     {
         if (!strcmp(pNode->city.name, cityName))
         {
             *pCity = pNode->city;
             return pos;
+            break;
         }
 
         pNode = pNode->pNext;

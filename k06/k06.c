@@ -88,7 +88,7 @@ void DynamicProgLimited(Menu arrayItem[], int items, int nap_size)
             nap_value[i][k] = nap_value[i-1][k];
             history[i][k] = k;
         }
-        for(j=k+1; j<=nap_size; j++)
+        for(j=k; j<=nap_size; j++)
         {
             new_value = nap_value[i-1][j-arrayItem[i-1].price] + arrayItem[i-1].calorie;
             if(new_value > nap_value[i-1][j])
